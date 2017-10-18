@@ -90,7 +90,7 @@ module.exports = function generateVersionDocProcessor(gitData) {
           makeOption(
             {version: 'snapshot'},
             'Latest',
-            'master'
+            'master-snapshot'
           ),
           makeOption(
             {version: 'snapshot-stable'},
