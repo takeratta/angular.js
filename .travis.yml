@@ -62,6 +62,7 @@ notifications:
 jobs:
   include:
     - stage: deploy
+      if: type != pull_request
       env:
         - JOB=deploy
       before_script: skip

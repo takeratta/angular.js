@@ -62,11 +62,11 @@ case "$JOB" in
     #   the commit is tagged
     #   - or the branch is "master"
     #   - or the branch distTag from package.json is "latest" (i.e. stable branch)
-    if [[ "$TRAVIS_TAG" != '' || $TRAVIS_BRANCH = master ]]; then
+    if [[ "$TRAVIS_TAG" != '' || $TRAVIS_BRANCH = master || "$DIST_TAG" == latest ]]; then
       DEPLOY_CODE=true
     fi
 
-    if [[ "$TRAVIS_PULL_REQUEST" = false && ("$DEPLOY_DOCS" || "$DEPLOY_CODE") ]]; then
+    if [[ "$DEPLOY_DOCS" || "$DEPLOY_CODE" ]]; then
       grunt prepareFirebaseDeploy
     else
       echo "Skipping deployment build because conditions have not been met."
